@@ -19,7 +19,16 @@
                 return;
             }
 
-            that.set("isLoggedIn", true);
+            $.post('http://localhost:5286/Account/Login',
+              { userName: username, password: password, api: true })
+                .done(function (e)
+                {
+                  that.set("isLoggedIn", true);
+                })
+                .error(function (e) {
+                navigator.notification.alert("Invalid username or password",
+                    function () { }, "Login failed", 'OK');
+                });
         },
 
         onLogout: function () {
