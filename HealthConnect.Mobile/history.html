@@ -17,13 +17,13 @@
         
       <ul data-role="listview" data-style="inset" data-template="history-template" data-source="app.historyService.history"></ul>
         <script type="text/x-kendo-templ" id="history-template">
-  			#: data.Office.OfficeName #            
+  			<span>#: data.Office.OfficeName #</span><span style="float: right"> #= data.TotalReferrals#</span>     
       		#= renderDetailsTemplate(data) #
 		</script>
         <script id="history-details-template" type="text/x-kendo-template">
            <ul>
             # $.each(data.ReferralHistoryDetails, function (index, item) {
-            # <li> ${item.DateString}  ${item.NumberReferrals}</li>#                        
+            # <li> ${item.DateString}  <span style="float: right">${item.NumberReferrals}</span></li>#                        
               }); 
             #
             </ul>
