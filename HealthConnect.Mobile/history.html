@@ -5,14 +5,30 @@
         <title></title>
     </head>
     <body>
+        <script>
+    function renderDetailsTemplate(data) {
+    return kendo.Template.compile($('#history-details-template').html())(data);
+}
+
+</script>
          <div id="tabstrip-history"
         data-role="view"
         data-title="History">
         
-      <ul data-role="listview" data-style="inset" data-template="reddit-template" data-source="app.historyService.reddit"></ul>
-        <script type="text/x-kendo-templ" id="reddit-template">
-  			#: data #
+      <ul data-role="listview" data-style="inset" data-template="history-template" data-source="app.historyService.history"></ul>
+        <script type="text/x-kendo-templ" id="history-template">
+  			#: data.Office.OfficeName #            
+      		#= renderDetailsTemplate(data) #
+		</script>
+        <script id="history-details-template" type="text/x-kendo-template">
+           <ul>
+            # $.each(data.ReferralHistoryDetails, function (index, item) {
+            # <li> ${item.DateString}  ${item.NumberReferrals}</li>#                        
+              }); 
+            #
+            </ul>
 		</script>
     </div>
     </body>
 </html>
+
