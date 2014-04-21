@@ -4,20 +4,25 @@
     <title></title>
 
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/history.js"></script>
+    <script src="scripts/login.js"></script>   
+    
 </head>
 <body>
-    <div data-role="view" id="drawer-Referral-Appointments" data-layout="drawer-layout" data-title="Referral Appointments">
+    <div data-role="view">
     </div>
 
-<div data-role="drawer" id="health-connect-drawer" style="width: 270px" data-views="['drawer-Referral-Appointments', 'drawer-Incoming-Referrals', 'drawer-Referral-History']">
+<div data-role="drawer" id="health-connect-drawer" style="width: 270px">
     <ul data-role="listview" data-type="group">
         <li>
             <ul>
-                <li data-icon="Appointments"><a href="#drawer-Referral-Appointments" data-transition="none">Referral Appointments</a></li>
-                <li data-icon="Incoming"><a href="#drawer-Incoming-Referrals" data-transition="none">Incoming Referrals</a></li>
-                <li data-icon="History"><a href="#drawer-Referral-History" data-transition="none">Referral History</a></li>
+                <li data-icon="Incoming"><a href="login.html" data-transition="none">Incoming Referrals</a></li>
+                <li data-icon="Appointments"><a href="ReferralAppointments.html" data-transition="none">Referral Appointments</a></li>
+                <li data-icon="History"><a href="history.html" data-transition="none">Referral History</a></li>
             </ul>
         </li>
     </ul>
@@ -51,8 +56,6 @@
 </style>
 
 
-<script>
-    var app = new kendo.mobile.Application(document.body);
-</script>
+
 </body>
 </html>
