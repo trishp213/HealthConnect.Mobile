@@ -3,8 +3,21 @@
         app = global.app = global.app || {};
 
     HistoryViewModel = kendo.data.ObservableObject.extend({
-       
-           });
+        listViewClick: function (e) {
+            var hidden = $(e.item).find("ul").is(':hidden');
+             $('.history-details').hide();
+             if(hidden === true) {
+                 $(e.item).find("ul").show();
+            }
+           },
+        
+        renderDetailsTemplate: function(data) {
+    		return kendo.Template.compile($('#history-details-template').html())(data);
+			}
+        
+        });
+    
+    
 
     app.historyService = {
         viewModel: new HistoryViewModel(),

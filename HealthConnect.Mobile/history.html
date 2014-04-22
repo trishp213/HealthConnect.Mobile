@@ -5,26 +5,13 @@
         <title></title>
     </head>
     <body>
-        <script>
-            function listViewClick(e) {
-             $('.history-details').hide();
-             $(e.item).find("ul").toggle();
-            }
-            
-    function renderDetailsTemplate(data) {
-    return kendo.Template.compile($('#history-details-template').html())(data);
-}
-
-</script>
-         <div id="tabstrip-history"
-        data-role="view"
-        data-title="History">
+         <div id="tabstrip-history" data-role="view" data-title="Referral History">
         
       <ul data-icon="details" data-role="listview" data-style="inset" data-template="history-template" 
-          data-source="app.historyService.history" data-click="listViewClick"></ul>
+          data-source="app.historyService.history" data-click="app.historyService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
   			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span style="float: right"> #= data.TotalReferrals# Referrals</span>     
-      		#= renderDetailsTemplate(data) #
+      		#= app.historyService.viewModel.renderDetailsTemplate(data) #
 		</script>
         <script id="history-details-template" type="text/x-kendo-template">
            <ul hidden style="list-style: none;" class="history-details">
