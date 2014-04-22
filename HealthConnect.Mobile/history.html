@@ -2,13 +2,22 @@
 
 <html>
     <head>
-        <title></title>
+        <title>Referral History</title>
     </head>
     <body>
-         <div id="tabstrip-history" data-role="view" data-title="Referral History">
+         <div id="tabstrip-history" data-role="view" data-title="Referral History" data-model="app.historyService.viewModel">
+        <div style="text-align: right"><input data-role="dropdownlist"
+                   data-bind="value: selectedTimeFrame,
+                              source: timeFrames,
+            			      events: {
+                                change: onTimeFrameChange,
+                              }",
+            data-text-field="name"
+            data-value-field="value"
+            />
+            </div>
         
-      <ul data-icon="details" data-role="listview" data-style="inset" data-template="history-template" 
-          data-source="app.historyService.history" data-click="app.historyService.viewModel.listViewClick"></ul>
+      <ul data-icon="details" data-role="listview" data-template="history-template" data-source="app.historyService.history" data-click="app.historyService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
   			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span style="float: right"> #= data.TotalReferrals# Referrals</span>     
       		#= app.historyService.viewModel.renderDetailsTemplate(data) #
