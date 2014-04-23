@@ -19,13 +19,13 @@
         
       <ul data-icon="details" data-role="listview" data-template="history-template" data-source="app.historyService.history" data-click="app.historyService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
-  			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span style="float: right"> #= data.TotalReferrals# Referrals</span>     
+  			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span class="right"> #= data.TotalReferrals# Referrals</span>     
       		#= app.historyService.viewModel.renderDetailsTemplate(data) #
 		</script>
         <script id="history-details-template" type="text/x-kendo-template">
-           <ul hidden style="list-style: none;" class="history-details">
+           <ul hidden  class="history-details">
             # $.each(data.ReferralHistoryDetails, function (index, item) {
-            # <li data-icon="details"> ${item.DateString}  <span style="float: right">${item.NumberReferrals} Referrals</span></li>#                        
+            # <li data-icon="details"> ${item.DateString}  <span class="right">${item.NumberReferrals} Referrals</span></li>#                        
               }); 
             #
             </ul>

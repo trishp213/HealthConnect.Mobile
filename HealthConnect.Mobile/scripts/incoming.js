@@ -1,7 +1,7 @@
 (function (global) {
         app = global.app = global.app || {};
     
-    app.historyService = {   
+    app.incomingService = {   
       viewModel: kendo.observable({
         selectedTimeFrame: {name: "1 week", value: "7"},
         timeFrames: [
@@ -12,23 +12,23 @@
         {name: "All", value: "0"}
         ],
         onTimeFrameChange: function(e){
-            app.historyService.history.read({timeFrame: this.get("selectedTimeFrame").value});
+            app.incomingService.incoming.read({timeFrame: this.get("selectedTimeFrame").value});
         },        
         listViewClick: function (e) {
             var hidden = $(e.item).find("ul").is(':hidden');
-             $('.history-details').hide();
+             $('.incoming-details').hide();
              if(hidden === true) {
                  $(e.item).find("ul").show();
             }
            },        
         renderDetailsTemplate: function(data) {
-    		return kendo.Template.compile($('#history-details-template').html())(data);
+    		return kendo.Template.compile($('#incoming-details-template').html())(data);
 			}
         }),
-      history: new kendo.data.DataSource.create({
+      incoming: new kendo.data.DataSource.create({
             transport: {
                 read: {
-                    url:"http://localhost:5286/Api/Mobile/History",
+                    url:"http://localhost:5286/Api/Mobile/Incoming",
                 	data: {timeFrame: "7"}
                     }
             }

@@ -43,3 +43,12 @@
         background-size: 100%;
     }
 }
+
+
+.right {
+    float: right;
+}
+
+ul {
+    list-style: none;
+}
