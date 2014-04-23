@@ -25,9 +25,11 @@
         <script id="incoming-details-template" type="text/x-kendo-template">
            <ul style="list-style: none;" class="incoming-details">
             # $.each(data.IncomingReferralDetails, function (index, item) {
-            # <li data-icon="details"> 
+            # <li data-icon="details" style="border-bottom: 1px solid;"> 
             	<div>${item.OfficeName}</div>
+                # if(item.AppointmentDateTime){ #
                 <div>Scheduled for ${item.AppointmentDate} at ${item.AppointmentTime}</div>
+               # }#
               </li>#                        
               }); 
             #
