@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div data-role="view">
+        <ul data-role="listview" data-template="timeSpan-template"
+            data-click="app.historyService.viewModel.onTimeFrameChange"
+            data-source="app.historyService.viewModel.timeFrames"></ul>
+        <script type="text/x-kendo-templ" id="timeSpan-template">
+  		<div>#: data.name #</div>
+		</script>
+        </div>
+    </body>
+</html>

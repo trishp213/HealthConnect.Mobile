@@ -12,7 +12,9 @@
         {name: "All", value: "0"}
         ],
         onTimeFrameChange: function(e){
-            app.historyService.history.read({timeFrame: this.get("selectedTimeFrame").value});
+            app.historyService.viewModel.set("selectedTimeFrame", e.dataItem)
+            app.application.navigate("views/history.html");
+            app.historyDataSource.read({timeFrame: e.dataItem.value});
         },        
         listViewClick: function (e) {
             var hidden = $(e.item).find("ul").is(':hidden');
@@ -24,15 +26,15 @@
         renderDetailsTemplate: function(data) {
     		return kendo.Template.compile($('#history-details-template').html())(data);
 			}
-        }),
-      history: new kendo.data.DataSource.create({
+        })      
+    }
+
+    app.historyDataSource = new kendo.data.DataSource.create({
             transport: {
                 read: {
                     url:"http://localhost:5286/Api/Mobile/History",
-                	data: {timeFrame: "7"}
+                	data: {timeFrame: app.historyService.viewModel.selectedTimeFrame.value}
                     }
             }
         })
-    }
-    
 })(window);
