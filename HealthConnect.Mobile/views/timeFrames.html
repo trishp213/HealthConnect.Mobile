@@ -5,13 +5,29 @@
         <title></title>
     </head>
     <body>
-        <div data-role="view">
+        <div data-role="view" id="timeFramesView">
         <ul data-role="listview" data-template="timeSpan-template"
-            data-click="app.historyService.viewModel.onTimeFrameChange"
-            data-source="app.historyService.viewModel.timeFrames"></ul>
+            data-click="viewModel.onTimeFrameChange"
+            data-source="viewModel.timeFrames"></ul>
         <script type="text/x-kendo-templ" id="timeSpan-template">
   		<div>#: data.name #</div>
 		</script>
         </div>
+        
+        <script>
+			var viewModel = kendo.observable({
+           	 selectedTimeFrame: {name: "1 week", value: "7"},
+                timeFrames: [
+                {name: "1 week", value: "7"}, 
+                {name: "30 days", value: "30"},
+                {name: "60 days", value: "60"},
+                {name: "90 days", value: "90"},
+                {name: "All", value: "0"}
+                ],
+                onTimeFrameChange: function(e){
+                    app.application.navigate("views/history.html?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
+                }  
+              });
+        </script>
     </body>
 </html>
