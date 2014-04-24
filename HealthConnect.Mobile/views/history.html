@@ -5,13 +5,15 @@
         <title>Referral History</title>
     </head>
     <body>
-         <div id="tabstrip-history" data-role="view" data-title="Referral History" data-model="app.historyService.viewModel"
+         <div id="tabstrip-history" data-role="view" data-title="Referral History"
+             data-model="app.historyService.viewModel"
              data-show="app.historyService.viewModel.refreshData">
         <div style="text-align: right">
-            <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html"></a>
+             <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html"></a>
             </div>
         
-      <ul data-icon="details" data-role="listview" data-template="history-template" data-source="app.historyDataSource" 
+      <ul data-icon="details" data-role="listview" data-template="history-template" 
+          data-source="app.historyDataSource" 
           data-click="app.historyService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
   			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span class="right"> #= data.TotalReferrals# Referrals</span>     

@@ -5,19 +5,16 @@
         <title>Referral Incoming</title>
     </head>
     <body>
-         <div id="tabstrip-incoming" data-role="view" data-title="Incoming Referrals" data-model="app.incomingService.viewModel">
-        <div style="text-align: right"><input data-role="dropdownlist"
-                   data-bind="value: selectedTimeFrame,
-                              source: timeFrames,
-            			      events: {
-                                change: onTimeFrameChange,
-                              }",
-            data-text-field="name"
-            data-value-field="value"
-            />
-            </div>
+         <div id="tabstrip-incoming" data-role="view" data-title="Incoming Referrals" 
+             data-model="app.incomingService.viewModel"
+             data-show="app.incomingService.viewModel.refreshData">
+           <div style="text-align: right">
+             <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html"></a>
+           </div>
         
-      <ul data-icon="details" data-role="listview" data-template="incoming-template" data-source="app.incomingService.incoming" data-click="app.incomingService.viewModel.listViewClick"></ul>
+      <ul data-icon="details" data-role="listview" data-template="incoming-template" 
+          data-source="app.incomingDataSource" 
+          data-click="app.incomingService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="incoming-template">
             <span>#: data.ReferralDate #</span>
       		#= app.incomingService.viewModel.renderDetailsTemplate(data) #
