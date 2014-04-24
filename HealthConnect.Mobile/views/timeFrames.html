@@ -25,7 +25,9 @@
                 {name: "All", value: "0"}
                 ],
                 onTimeFrameChange: function(e){
-                    app.application.navigate("views/history.html?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
+                    debugger;
+                    var lastView = app.application.pane.history;
+                    app.application.navigate(lastView[lastView.length - 2] + "?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
                 }  
               });
         </script>

@@ -16,7 +16,7 @@
 			},
           refreshData: function(e) {
               if(e.view.params.timeFrameValue) {
-            	app.historyService.viewModel.set("selectedTimeFrame", {name: e.view.params.timeFrameName, value: e.view.params.timeFrameValue});
+            	app.incomingService.viewModel.set("selectedTimeFrame", {name: e.view.params.timeFrameName, value: e.view.params.timeFrameValue});
                 }
               app.incomingDataSource.read({timeFrame: app.incomingService.viewModel.get("selectedTimeFrame").value});
           }
