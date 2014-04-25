@@ -29,7 +29,82 @@
     background-color:#122135;
     font-family:"roboto", sans-serif;
     color:#ffffff !important;
-    font-size:32px;
+    font-size:32px !important;
+}
+
+.km-navbar {
+    color: #FFFFFF !important;
+}
+
+.km-ios #health-connect-drawer .km-content, .km-android #health-connect-drawer .km-content, .km-blackberry #health-connect-drawer .km-content,
+.km-ios #health-connect-drawer .km-list > li, .km-android #health-connect-drawer .km-list > li, .km-blackberry #health-connect-drawer .km-list > li,
+.km-ios #health-connect-drawer .km-listview-link > .km-icon, .km-android #health-connect-drawer .km-listview-link > .km-icon, .km-blackberry #health-connect-drawer .km-listview-link > .km-icon,
+.km-ios #health-connect-drawer .km-list li > .km-icon, .km-android #health-connect-drawer .km-list li > .km-icon, .km-blackberry #health-connect-drawer .km-list li > .km-icon
+{
+    background-color: #ffffff;
+    color: #fff;
+}
+
+.km-drawer-button:before, .km-drawer-button:after { 
+    content: "\e054";
+	color: #ffffff;
+}
+
+.timeFrameLink {
+    text-align: right;
+    padding: 10px;
+}
+
+.timeFrameLink a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #666666;
+}
+
+.selectedGroup {
+    background-color: #65b75e !important;
+    color: #ffffff !important;
+}  
+
+.listHeader {
+    background-color: LightGrey;
+}
+
+.listHeaderSection {
+    padding: 10px;
+}
+
+.listHeaderTitle{
+    font-weight: lighter;
+    font-size: 24px;
+}
+
+.listHeaderDetail {
+    font-weight: lighter;
+    font-size: 20px;
+    float: right;
+}
+
+.km-list > li:first-child {
+    border-top: 0 !important;
+}
+
+.km-list > li {
+    border-image: none !important;
+    border-top: 1px solid #999999 !important;
+}
+
+.listItemDetail div {
+    border-top: 1px solid #999999 !important;
+
+}
+
+
+.listItemDetail {
+    font-weight: lighter;
+    font-size: 20px;
+    color: #333333 !important;
+    background-color: pink !important;
 }
 
 /* RETINA DISPLAY STYLES */
@@ -49,8 +124,17 @@
     float: right;
 }
 
+.padding-10 {
+    padding: 10px;
+}
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+li {
+    padding: 0 !important;
+    margin: 0 !important;
 }

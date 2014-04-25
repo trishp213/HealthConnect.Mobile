@@ -6,9 +6,13 @@
         selectedTimeFrame: {name: "1 week", value: "7"},
         listViewClick: function (e) {
             var hidden = $(e.item).find("ul").is(':hidden');
-             $('.history-details').hide();
+            $(".history-details").hide();
+            $(".km-details").show();
+            $("div").removeClass("selectedGroup");
              if(hidden === true) {
                  $(e.item).find("ul").show();
+                 $(e.item).find(".listHeader").addClass("selectedGroup");
+                 $(e.item).find(".km-details").hide();
             }
            },        
          renderDetailsTemplate: function(data) {

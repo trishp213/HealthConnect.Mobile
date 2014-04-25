@@ -8,21 +8,31 @@
          <div id="tabstrip-history" data-role="view" data-title="Referral History"
              data-model="app.historyService.viewModel"
              data-show="app.historyService.viewModel.refreshData">
-        <div style="text-align: right">
+        <div class="timeFrameLink">
              <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
             </div>
         
-      <ul data-icon="details" data-role="listview" data-template="history-template" 
-          data-source="app.historyDataSource" 
+      <ul data-role="listview" data-template="history-template" data-source="app.historyDataSource"
           data-click="app.historyService.viewModel.listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
-  			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span class="right"> #= data.TotalReferrals# Referrals</span>     
+            <div class="listHeader">
+            <div class="listHeaderSection">
+  		  <span class="km-icon km-details"></span>
+            <span class="listHeaderTitle">#: data.Office.OfficeName #</span>
+            <span class="listHeaderDetail"> #= data.TotalReferrals# Referrals</span>     
+            </div>
+            </div>
       		#= app.historyService.viewModel.renderDetailsTemplate(data) #
 		</script>
         <script id="history-details-template" type="text/x-kendo-template">
-           <ul hidden  class="history-details">
+           <ul hidden  class="history-details listItemDetail">
             # $.each(data.ReferralHistoryDetails, function (index, item) {
-            # <li data-icon="details"> ${item.DateString}  <span class="right">${item.NumberReferrals} Referrals</span></li>#                        
+            # <li>
+              <div class="padding-10">
+            	<span>${item.DateString}</span>
+            	<span class="right">${item.NumberReferrals} Referrals</span>
+              </div>
+            </li>#                        
               }); 
             #
             </ul>
