@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-        <div data-role="view">
+        <div data-role="view" data-show="viewModel.onShow">
         <ul data-role="listview" data-template="timeSpan-template"
             data-click="viewModel.onTimeFrameChange"
             data-source="viewModel.timeFrames"></ul>
@@ -16,6 +16,8 @@
         
         <script>
 			var viewModel = kendo.observable({
+                self: this, // hold on to a reference of this to access variables in function calls
+                back: '', // place to store the view to return the selected time frame to, because it doesn't show up in the history
            	 selectedTimeFrame: {name: "1 week", value: "7"},
                 timeFrames: [
                 {name: "1 week", value: "7"}, 
@@ -24,10 +26,12 @@
                 {name: "90 days", value: "90"},
                 {name: "All", value: "0"}
                 ],
+                onShow: function(e){
+                    self.back = e.view.params.back; // store the view parameters when the view loads so they can be accessed later
+                },
                 onTimeFrameChange: function(e){
-                    debugger;
-                    var lastView = app.application.pane.history;
-                    app.application.navigate(lastView[lastView.length - 2] + "?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
+                    // return to the previous view with the selected time frame as view parameters
+                    app.application.navigate("views/" + self.back + ".html?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
                 }  
               });
         </script>
