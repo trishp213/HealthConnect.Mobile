@@ -3,57 +3,67 @@
         app = global.app = global.app || {};
 
     LoginViewModel = kendo.data.ObservableObject.extend({
-        isLoggedIn: false,
-        username: "",
-        password: "",
+                    isLoggedIn: false,
+                    username: "",
+                    password: "",
 
-        onLogin: function () {
-            var that = this,
-                username = that.get("username").trim(),
-                password = that.get("password").trim();
+                    onLogin: function () {
+                        var that = this,
+                            username = that.get("username").trim(),
+                            password = that.get("password").trim();
 
-            if (username === "" || password === "") {
-                navigator.notification.alert("Both fields are required!",
-                    function () { }, "Login failed", 'OK');
+                        if (username === "" || password === "") {
+                            navigator.notification.alert("Both fields are required!",
+                                                         function () {
+                                                         }, "Login failed", 'OK');
 
-                return;
-            }
+                            return;
+                        }
 
-            $.post('http://localhost:5286/Account/Login',
-              { userName: username, password: password, api: true })
-                .done(function (e)
-                {
-                  that.set("isLoggedIn", true);
-                })
-                .error(function (e) {
-                navigator.notification.alert("Invalid username or password",
-                    function () { }, "Login failed", 'OK');
+                        $.ajax({
+                                   url: "http://localhost:5286/Api/Mobile/Login",
+                                   type: "POST",
+                                   data: { userName: username, password: password, api: true }
+                               })
+                            .done(function (e) {
+                                if (e === 200) {
+                                    that.set("isLoggedIn", true);
+                                } else {
+                                    navigator.notification.alert("Invalid username or password", function () {
+                                    }, "Login failed", 'OK'); 
+                                }
+                            })
+                            .fail(function (e) {
+                                navigator.notification.alert("Invalid username or password",
+                                                             function () {
+                                                             }, "Login failed", 'OK');
+                            });
+                    },
+
+
+                    onLogout: function () {
+                        var that = this;
+
+                        that.clearForm();
+                        that.set("isLoggedIn", false);
+                    },
+
+                    clearForm: function () {
+                        var that = this;
+
+                        that.set("username", "");
+                        that.set("password", "");
+                    },
+
+                    checkEnter: function (e) {
+                        var that = this;
+
+                        if (e.keyCode == 13) {
+                            $(e.target).blur();
+                            that.onLogin();
+                        }
+                    }
                 });
-        },
-
-        onLogout: function () {
-            var that = this;
-
-            that.clearForm();
-            that.set("isLoggedIn", false);
-        },
-
-        clearForm: function () {
-            var that = this;
-
-            that.set("username", "");
-            that.set("password", "");
-        },
-
-        checkEnter: function (e) {
-            var that = this;
-
-            if (e.keyCode == 13) {
-                $(e.target).blur();
-                that.onLogin();
-            }
-        }
-    });
 
     app.loginService = {
         viewModel: new LoginViewModel()
