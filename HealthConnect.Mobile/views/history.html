@@ -8,8 +8,8 @@
          <div id="tabstrip-history" data-role="view" data-title="Referral History"
              data-model="app.historyService.viewModel"
              data-show="app.historyService.viewModel.refreshData">
-        <div class="timeFrameLink">
-             <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
+            <div class="timeFrameLink">
+                <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
             </div>
         
       <ul data-role="listview" data-template="history-template" data-source="app.historyDataSource"
@@ -28,10 +28,8 @@
            <ul hidden  class="history-details listItemDetail">
             # $.each(data.ReferralHistoryDetails, function (index, item) {
             # <li>
-              <div class="padding-10">
             	<span>${item.DateString}</span>
             	<span class="right">${item.NumberReferrals} Referrals</span>
-              </div>
             </li>#                        
               }); 
             #

@@ -70,8 +70,17 @@
     background-color: LightGrey;
 }
 
+#incoming-referrals-list .listHeader {
+    background-color: #122135;
+    color: #ffffff;
+}
+
 .listHeaderSection {
     padding: 10px;
+}
+
+.listHeaderSection span:nth-child(2) {
+    font-weight: bold;
 }
 
 .listHeaderTitle{
@@ -94,17 +103,20 @@
     border-top: 1px solid #999999 !important;
 }
 
-.listItemDetail div {
-    border-top: 1px solid #999999 !important;
-
-}
-
-
 .listItemDetail {
     font-weight: lighter;
     font-size: 10px;
     color: #333333 !important;
+    background-color: #ebebeb;
+    }
+
+.history-details {
     background-color: #e0f1df !important;
+}
+
+.listItemDetail > li {
+    padding: 10px !important;
+    border-top: 1px solid #999999 !important;
 }
 
 /* RETINA DISPLAY STYLES */
