@@ -50,6 +50,28 @@
 	color: #ffffff;
 }
 
+.km-appointments-icon:before, .km-appointments-icon:after,
+.km-incoming-icon:before, km-incoming-icon:after,
+.km-history-icon:before, km-history-icon:after{
+    color: #333333;
+    display: inline-block !important;
+    left: 7px;
+    bottom: 2px;
+}
+
+
+.km-appointments-icon:before, km-appointments-icon:after {
+    content: "\E089";
+}
+
+.km-incoming-icon:before, km-incoming-icon:after {
+    content: "\E096";
+}
+
+.km-history-icon:before, km-history-icon:after {
+    content: "\E08D";
+}
+
 .timeFrameLink {
     text-align: right;
     padding: 10px;
