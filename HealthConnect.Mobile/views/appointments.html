@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Referral Appointments</title>
+    </head>
+    <body>
+        <div id="tabstrip-appointments" data-role="view" data-title="Referral Appointments" 
+             data-model="app.appointmentsService.viewModel"
+             data-show="app.appointmentsService.viewModel.refreshData">
+
+            <ul id="appointments-referrals-list" data-icon="details" data-role="listview" data-template="appointments-template" 
+                data-source="app.appointmentsDataSource" data-bound="app.appointmentsService.viewModel.onDataBound"></ul>
+            <script type="text/x-kendo-templ" id="appointments-template">
+                <div class="listHeader">
+            		<div class="listHeaderSection">
+                        <span>#: data.AppointmentDatePrefix #</span>
+                		<span>#: data.AppointmentDate #</span>
+                	</div>
+                </div>
+                #= app.appointmentsService.viewModel.renderDetailsTemplate(data) #
+            </script>
+            <script id="appointments-details-template" type="text/x-kendo-template">
+                <ul style="list-style: none;" class="appointments-details listItemDetail">
+                    # $.each(data.Offices, function (index, item) {
+                    #
+                    <li data-icon="details">
+                        <div>${item}</div>
+                    </li>#                        
+                    }); 
+                    #
+                </ul>
+            </script>
+        </div>
+    </body>
+</html>
+
