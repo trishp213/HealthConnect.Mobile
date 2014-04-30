@@ -45,6 +45,14 @@
         refreshData: function(e) {
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
         },
+        onClick: function(e) {
+            $("li").removeClass("selectedGroup");
+            $(".listHeader").removeClass("selectedGroup"); // unhilite all
+            e.item.addClass("selectedGroup");
+            var selectedDate = e.item.find(".day-of-week-date").text();
+            $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
+            
+        },
         onSwipeMonth: function(e) {
             
             var monthsToAdd = 1;

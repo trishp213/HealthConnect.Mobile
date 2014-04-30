@@ -8,14 +8,14 @@
         <div id="tabstrip-appointments" data-role="view" data-title="Referral Appointments" 
              data-model="app.appointmentsService.viewModel"
              data-show="app.appointmentsService.viewModel.refreshData">
-            <div style="text-align: center" class="padding-10" data-role="touch" data-enable-swipe="1" data-swipe="app.appointmentsService.viewModel.onSwipeMonth">
+            <div class="center padding-10" data-role="touch" data-enable-swipe="1" data-swipe="app.appointmentsService.viewModel.onSwipeMonth">
                 <span data-bind="text: month"></span>
             </div>
             <div data-role="touch" data-enable-swipe="1" data-swipe="app.appointmentsService.viewModel.onWeekSwipe">
-                <ul id="days-of-week-list" data-role="listview" data-template="day-of-week-template" data-source="app.appointmentsService.viewModel.daysOfWeek"></ul>
+                <ul id="days-of-week-list"  data-click="app.appointmentsService.viewModel.onClick" data-role="listview" data-template="day-of-week-template" data-source="app.appointmentsService.viewModel.daysOfWeek"></ul>
                 <script type="text/x-kendo-templ" id="day-of-week-template">
                     <span>#: data.day #</span><br/>
-                    <span>#: data.date #</span>
+                    <span class="day-of-week-date">#: data.date #</span>
                 </script>
             </div>
 

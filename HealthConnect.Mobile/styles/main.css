@@ -188,6 +188,10 @@
     padding: 10px;
 }
 
+.center {
+    text-align: center;
+}
+
 .margin-10 {
     margin: 10px;
 }
