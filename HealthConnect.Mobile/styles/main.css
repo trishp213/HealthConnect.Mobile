@@ -39,6 +39,18 @@
     width: 80%;
 }
 
+/* Appointments View Styles*/
+#days-of-week-list > li {
+    display: inline-block !important;
+    border: none !important;
+    text-align: center;
+    width: 14.2%;
+}
+
+#days-of-week-list {
+}
+
+
 .km-view-title {
     background-color:#122135;
     font-family:"roboto", sans-serif;
