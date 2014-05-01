@@ -9,35 +9,38 @@
         }
         });
     
+    var dayDisplayFormat = "dddd, MMM d";
+    var monthDisplayFormat = "MMMM yyyy";    
+    var dateFormat = "MMM dd, yyyy";
+
     app.appointmentsService = {   
         viewModel: kendo.observable({
         selectedDate: null,
-        month: kendo.toString(new Date(), "MMMM yyyy"),
-        daysOfWeek: new kendo.data.DataSource({ data: [] }),
+                                        month: kendo.toString(new Date(), monthDisplayFormat),
+                                        daysOfWeek: new kendo.data.DataSource({ data: [] }),
         startDate: null,
         endDate: null,
         updateDaysOfWeek: function () {
             var daysOfWeek = new Array();
-
-            var sunday = Date.parse(app.appointmentsService.viewModel.selectedDate.toString("MMM dd, yyyy"));
+            var sunday = Date.parse(app.appointmentsService.viewModel.selectedDate.toString(dateFormat));
             if (sunday.is().sunday() === false) {
                 sunday = sunday.last().sunday();
             }
             
-            app.appointmentsService.viewModel.set("startDate", sunday.toString("MMM dd, yyyy"));
+            app.appointmentsService.viewModel.set("startDate", sunday.toString(dateFormat));
 
             for (var i = 0; i < 7; i++) {
                 daysOfWeek.push({ 
                     day: sunday.toString("ddd"), 
                     date: sunday.getDate(), 
-                    month: sunday.toString("MMMM yyyy"),
-                	dateValue: sunday.toString("dddd, MMM d")});
+                    month: sunday.toString(monthDisplayFormat),
+                	dateValue: sunday.toString(dayDisplayFormat)});
                 sunday.add(1).days();
             }
-            app.appointmentsService.viewModel.set("endDate", sunday.toString("MMM dd, yyyy"));
+            app.appointmentsService.viewModel.set("endDate", sunday.toString(dateFormat));
             
             app.appointmentsService.viewModel.daysOfWeek.data(daysOfWeek);
-            app.appointmentsService.viewModel.set("month", app.appointmentsService.viewModel.selectedDate.toString("MMMM yyyy"));
+            app.appointmentsService.viewModel.set("month", app.appointmentsService.viewModel.selectedDate.toString(monthDisplayFormat));
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
         },
 	    getDateRange: function(){
@@ -65,7 +68,7 @@
             }
             var currentDate = kendo.parseDate(app.appointmentsService.viewModel.selectedDate);
             currentDate = currentDate.add(monthsToAdd).months();
-            app.appointmentsService.viewModel.set("month", currentDate.toString("MMMM yyyy"));
+            app.appointmentsService.viewModel.set("month", currentDate.toString(monthDisplayFormat));
             
             if(monthsToAdd === 1) {
                 currentDate = currentDate.moveToFirstDayOfMonth();
@@ -73,11 +76,11 @@
             else {
                 currentDate = currentDate.moveToLastDayOfMonth();
             }
-            app.appointmentsService.viewModel.set("selectedDate", kendo.parseDate(currentDate.toString("MMM dd, yyyy"), "MMM dd, yyyy"));
+            app.appointmentsService.viewModel.set("selectedDate", kendo.parseDate(currentDate.toString(dateFormat), dateFormat));
             
         },
         onWeekSwipe: function(e) {
-            var currentlySelectedDate = Date.parse(app.appointmentsService.viewModel.selectedDate.toString("MMM dd, yyyy"));
+            var currentlySelectedDate = Date.parse(app.appointmentsService.viewModel.selectedDate.toString(dateFormat));
 
             if (e.direction === "right") { // going to previous week, set selected date to last saturday
                 app.appointmentsService.viewModel.set("selectedDate", currentlySelectedDate.last().saturday());
@@ -86,11 +89,11 @@
             }
         },
         onDataBound: function(e) {
-            var selectedDate = app.appointmentsService.viewModel.selectedDate.toString("dddd, MMM d");
+            var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
             $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
         }
-                                    })
+      })
     }
     app.appointmentsService.viewModel.bind("change", function(e) {
         if (e.field === "selectedDate") {
