@@ -24,7 +24,7 @@
             </div>
 
             <div data-role="scroller" id="appointments-scroller">
-            <ul id="appointments-referrals-list" data-icon="details" data-role="listview" data-template="appointments-template" 
+            <ul id="appointments-referrals-list" data-pull-to-refresh="true" data-role="listview" data-template="appointments-template" 
                 data-source="app.appointmentsDataSource" data-bound="app.appointmentsService.viewModel.onDataBound"></ul>
             </div>
             <script type="text/x-kendo-templ" id="appointments-template">
