@@ -57,6 +57,8 @@
     padding-left: 10px;
     }
 
+
+
 .km-view-title {
     background-color:#122135;
     font-family:"roboto", sans-serif;
@@ -68,6 +70,7 @@
     color: #FFFFFF !important;
 }
 
+/* DRAWER STYLES */
 .km-ios #health-connect-drawer .km-content, .km-android #health-connect-drawer .km-content, .km-blackberry #health-connect-drawer .km-content,
 .km-ios #health-connect-drawer .km-list > li, .km-android #health-connect-drawer .km-list > li, .km-blackberry #health-connect-drawer .km-list > li,
 .km-ios #health-connect-drawer .km-listview-link > .km-icon, .km-android #health-connect-drawer .km-listview-link > .km-icon, .km-blackberry #health-connect-drawer .km-listview-link > .km-icon,
@@ -80,6 +83,10 @@
 .km-drawer-button:before, .km-drawer-button:after { 
     content: "\e054";
 	color: #ffffff;
+    }
+
+#menu-items > li {
+    padding: 10px !important;
 }
 
 .km-appointments-icon:before, .km-appointments-icon:after,
