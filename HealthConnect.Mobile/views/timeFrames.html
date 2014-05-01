@@ -5,10 +5,11 @@
         <title></title>
     </head>
     <body>
-        <div data-role="view" data-show="viewModel.onShow">
+        <div data-role="view" data-show="viewModel.onShow" >
         <ul data-role="listview" data-template="timeSpan-template"
             data-click="viewModel.onTimeFrameChange"
-            data-source="viewModel.timeFrames"></ul>
+            data-source="viewModel.timeFrames"
+            id="timeFrames"></ul>
         <script type="text/x-kendo-templ" id="timeSpan-template">
   		<div>#: data.name #</div>
 		</script>

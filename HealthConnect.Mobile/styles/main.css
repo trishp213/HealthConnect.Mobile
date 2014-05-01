@@ -39,7 +39,7 @@
     width: 80%;
 }
 
-/* Appointments View Styles*/
+/* APPOINTMENTS VIEW STYLES */
 #days-of-week-list > li {
     display: inline-block !important;
     border: none !important;
@@ -47,9 +47,15 @@
     width: 14.2%;
 }
 
-#days-of-week-list {
+/* TIME FRAMES VIEW STYLES*/
+#timeFrames > li {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
+#timeFrames > li > div {
+    padding-left: 10px;
+    }
 
 .km-view-title {
     background-color:#122135;
