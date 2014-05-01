@@ -27,7 +27,11 @@
             app.appointmentsService.viewModel.set("startDate", sunday.toString("MMM dd, yyyy"));
 
             for (var i = 0; i < 7; i++) {
-                daysOfWeek.push({ day: sunday.toString("ddd"), date: sunday.getDate()});
+                daysOfWeek.push({ 
+                    day: sunday.toString("ddd"), 
+                    date: sunday.getDate(), 
+                    month: sunday.toString("MMMM yyyy"),
+                	dateValue: sunday.toString("dddd, MMM d")});
                 sunday.add(1).days();
             }
             app.appointmentsService.viewModel.set("endDate", sunday.toString("MMM dd, yyyy"));
@@ -49,9 +53,9 @@
             $("li").removeClass("selectedGroup");
             $(".listHeader").removeClass("selectedGroup"); // unhilite all
             e.item.addClass("selectedGroup");
-            var selectedDate = e.item.find(".day-of-week-date").text();
+            var selectedDate = e.item.find(".day-of-week-value").val();
             $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
-            
+            app.appointmentsService.viewModel.set("month", e.item.find(".day-of-week-month").val());
         },
         onSwipeMonth: function(e) {
             
