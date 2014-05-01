@@ -1,6 +1,8 @@
 (function (global) {
     app = global.app = global.app || {};
     
+    
+    
     app.appointmentsDataSource = new kendo.data.DataSource.create({
       transport: {
 			read: {
@@ -92,6 +94,10 @@
             var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
             $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
+            app.appointmentsService.viewModel.setScrollerHeight();
+        },
+        setScrollerHeight: function(e) {
+            $("#appointments-scroller").css("height", $(window).height() - $("#appointments-header").height());
         }
       })
     }
@@ -102,4 +108,7 @@
     });
     app.appointmentsService.viewModel.set("selectedDate", new Date());
     
+    if (window.DeviceOrientationEvent) {
+ 		window.addEventListener('deviceorientation', app.appointmentsService.viewModel.setScrollerHeight, false);
+        }
 })(window);

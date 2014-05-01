@@ -8,6 +8,7 @@
         <div id="tabstrip-appointments" data-role="view" data-title="Referral Appointments" 
              data-model="app.appointmentsService.viewModel"
              data-show="app.appointmentsService.viewModel.refreshData">
+            <div id="appointments-header">
             <div class="center padding-10" data-role="touch" data-enable-swipe="1" data-swipe="app.appointmentsService.viewModel.onSwipeMonth">
                 <span data-bind="text: month"></span>
             </div>
@@ -19,10 +20,13 @@
                     <input type="hidden" class="day-of-week-month" value="#: data.month #"/>
                     <input type="hidden" class="day-of-week-value" value="#: data.dateValue #"/>
                 </script>
+			</div>
             </div>
 
+            <div data-role="scroller" id="appointments-scroller">
             <ul id="appointments-referrals-list" data-icon="details" data-role="listview" data-template="appointments-template" 
                 data-source="app.appointmentsDataSource" data-bound="app.appointmentsService.viewModel.onDataBound"></ul>
+            </div>
             <script type="text/x-kendo-templ" id="appointments-template">
                 <div class="listHeader">
             		<div class="listHeaderSection">
