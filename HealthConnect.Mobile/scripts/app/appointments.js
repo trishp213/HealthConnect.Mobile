@@ -86,7 +86,9 @@
             }
         },
         onDataBound: function(e) {
-            $("span:contains('Today')").closest(".listHeader").addClass("selectedGroup");
+            var selectedDate = app.appointmentsService.viewModel.selectedDate.toString("dddd, MMM d");
+            $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
+            $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
         }
                                     })
     }
