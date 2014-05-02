@@ -1,16 +1,6 @@
 @import url('http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css');
 
 /* IMAGES */
-.welcome-image {
-    background-image: url(../styles/images/logo.png);
-    background-repeat: no-repeat;
-    background-color:#011730;
-    height: 25px;
-    display: block;
-    margin: 0px auto;
-}
-
-
 .logo-image {
     background-image: url(../styles/images/logo.png);
     background-position: 10px 10px;
@@ -182,10 +172,6 @@
 
 /* RETINA DISPLAY STYLES */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
-    .welcome-image {
-        background-image: url(../styles/images/logo.png);
-        background-size: 100%;
-    }
     .logo-image {
         background-image: url(../styles/images/logo.png);
         background-size: 100%;

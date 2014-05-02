@@ -2,17 +2,18 @@
 
 <html>
     <head>
-        <title>Referral Incoming</title>
+        <title>Incoming Referrals</title>
     </head>
     <body>
-        <div id="tabstrip-incoming" data-role="view" data-title="Incoming Referrals" 
+        <div data-role="view" data-title="Incoming Referrals" 
              data-model="app.incomingService.viewModel"
-             data-show="app.incomingService.viewModel.refreshData">
+             data-show="app.incomingService.viewModel.onShow">
             <div class="timeFrameLink">
                 <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=incoming"></a>
             </div>
 			<div data-bind="visible: noData" class="no-records-message">No referrals</div>
-            <ul id="incoming-referrals-list" data-pull-to-refresh="true" data-role="listview" data-template="incoming-template" 
+            <ul id="incoming-referrals-list" data-pull-to-refresh="true" 
+                data-role="listview" data-template="incoming-template" 
                 data-source="app.incomingDataSource" data-bound="app.incomingService.viewModel.onDataBound"></ul>
             <script type="text/x-kendo-templ" id="incoming-template">
                 <div class="listHeader">
@@ -24,7 +25,7 @@
                 #= app.incomingService.viewModel.renderDetailsTemplate(data) #
             </script>
             <script id="incoming-details-template" type="text/x-kendo-template">
-                <ul style="list-style: none;" class="incoming-details listItemDetail">
+                <ul class="incoming-details listItemDetail">
                     # $.each(data.IncomingReferralDetails, function (index, item) {
                     #
                     <li data-icon="details">

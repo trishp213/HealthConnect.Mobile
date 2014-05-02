@@ -4,10 +4,11 @@
     app.incomingService = {   
       viewModel: kendo.observable({
         selectedTimeFrame: {name: "1 week", value: "7"},
+        noData: true,
         renderDetailsTemplate: function(data) {
     		return kendo.Template.compile($('#incoming-details-template').html())(data);
 			},
-          refreshData: function(e) {
+          onShow: function(e) {
               if(e.view.params.timeFrameValue) {
             	app.incomingService.viewModel.set("selectedTimeFrame", {name: e.view.params.timeFrameName, value: e.view.params.timeFrameValue});
                 }
