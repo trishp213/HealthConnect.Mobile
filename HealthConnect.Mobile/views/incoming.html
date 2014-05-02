@@ -11,7 +11,7 @@
             <div class="timeFrameLink">
                 <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=incoming"></a>
             </div>
-
+			<div data-bind="visible: noData" class="no-records-message">No referrals</div>
             <ul id="incoming-referrals-list" data-pull-to-refresh="true" data-role="listview" data-template="incoming-template" 
                 data-source="app.incomingDataSource" data-bound="app.incomingService.viewModel.onDataBound"></ul>
             <script type="text/x-kendo-templ" id="incoming-template">

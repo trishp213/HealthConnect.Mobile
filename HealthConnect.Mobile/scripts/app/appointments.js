@@ -22,6 +22,7 @@
         daysOfWeek: new kendo.data.DataSource({ data: [] }),
         startDate: null,
         endDate: null,
+        noData: true,
         updateDaysOfWeek: function () {
             var daysOfWeek = new Array();
             var sunday = Date.parse(app.appointmentsService.viewModel.selectedDate.toString(dateFormat));
@@ -102,6 +103,13 @@
             }
         },
         onDataBound: function(e) {
+            if(this.dataSource.data().length === 0) {
+                app.appointmentsService.viewModel.set("noData", true);
+            }
+            else {
+                app.appointmentsService.viewModel.set("noData", false);
+            }
+            
             var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
             app.appointmentsService.viewModel.setScrollerHeight();

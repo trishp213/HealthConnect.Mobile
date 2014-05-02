@@ -15,6 +15,12 @@
           },
           onDataBound: function(e) {
               $("span:contains('Today')").closest(".listHeader").addClass("selectedGroup");
+              if(this.dataSource.data().length === 0) {
+                app.incomingService.viewModel.set("noData", true);
+            }
+            else {
+                app.incomingService.viewModel.set("noData", false);
+                }
           }
         })
         }

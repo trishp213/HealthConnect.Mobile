@@ -219,3 +219,11 @@ li {
     padding: 0 !important;
     margin: 0 !important;
 }
+
+.no-records-message {
+    padding: 10px; 
+    width: 100%; 
+    text-align: center; 
+    font-style: italic; 
+    color: #999999;
+    }

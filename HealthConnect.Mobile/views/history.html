@@ -11,8 +11,9 @@
             <div class="timeFrameLink">
                 <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
             </div>
-        
+        <div data-bind="visible: noData" class="no-records-message">No referrals</div>
       <ul data-role="listview" data-template="history-template" data-source="app.historyDataSource"
+          data-bound="app.historyService.viewModel.onDataBound"
           data-click="app.historyService.viewModel.listViewClick" data-pull-to-refresh="true"></ul>
         <script type="text/x-kendo-templ" id="history-template">
             <div class="listHeader">

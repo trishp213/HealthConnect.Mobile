@@ -4,6 +4,7 @@
     app.historyService = {   
       viewModel: kendo.observable({
         selectedTimeFrame: {name: "1 week", value: "7"},
+        noData: true,
         listViewClick: function (e) {
             var hidden = $(e.item).find("ul").is(':hidden');
             $(".history-details").hide();
@@ -23,7 +24,15 @@
             	app.historyService.viewModel.set("selectedTimeFrame", {name: e.view.params.timeFrameName, value: e.view.params.timeFrameValue});
                 }
               app.historyDataSource.read({timeFrame: app.historyService.viewModel.get("selectedTimeFrame").value});
-          }
+          },
+           onDataBound: function(e) {
+            if(this.dataSource.data().length === 0) {
+                app.historyService.viewModel.set("noData", true);
+            }
+            else {
+                app.historyService.viewModel.set("noData", false);
+                }
+            }
         })      
     }
 
