@@ -20,33 +20,23 @@
 <body>
     <div data-role="view"></div>
 
-<div data-role="drawer" id="health-connect-drawer" style="width: 270px">
-    <ul data-role="listview" data-type="group">
-        <li>
-            <ul id="menu-items">
-                <li><a href="views/incoming.html" data-transition="slide" data-icon="incoming-icon">Incoming Referrals</a></li>
-                <li><a href="views/appointments.html" data-transition="slide" data-icon="appointments-icon"> Referral Appointments</a></li>
-                <li><a href="views/history.html" data-transition="slide" data-icon="history-icon"> Referral History</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+
 
 <div data-role="layout" data-id="drawer-layout">
     <header data-role="header">
         <div data-role="navbar">
-            <a data-role="button" data-rel="drawer" href="#health-connect-drawer" data-icon="drawer-button" data-align="left"></a>
+            <a data-role="button" href="views/menu.html" data-icon="drawer-button" data-align="left"></a>
             <span data-role="view-title"></span>
         </div>
     </header>
 </div>
 
 <script>
-    kendo.mobile.ui.Drawer.current = null;
     
     // catch any unauthorized calls and redirect to login view
     $(document).ajaxError(function( event, jqxhr, settings, exception ) {
     if ( jqxhr.status === 401 ) {
+        app.loginService.viewModel.set("isLoggedIn", false);
         app.application.navigate("views/login.html");
     }
 });
