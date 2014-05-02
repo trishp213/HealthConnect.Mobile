@@ -5,9 +5,9 @@
         <title>Referral History</title>
     </head>
     <body>
-         <div id="tabstrip-history" data-role="view" data-title="Referral History"
+        <div data-role="view" data-title="Referral History"
              data-model="app.historyService.viewModel"
-             data-show="app.historyService.viewModel.refreshData">
+             data-show="app.historyService.viewModel.onShow">
             <div class="timeFrameLink">
                 <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
             </div>

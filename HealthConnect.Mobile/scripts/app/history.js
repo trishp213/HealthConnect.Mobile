@@ -19,7 +19,7 @@
          renderDetailsTemplate: function(data) {
     		return kendo.Template.compile($('#history-details-template').html())(data);
 			},
-          refreshData: function(e) {
+          onShow: function(e) {
               if(e.view.params.timeFrameValue) {
             	app.historyService.viewModel.set("selectedTimeFrame", {name: e.view.params.timeFrameName, value: e.view.params.timeFrameValue});
                 }
