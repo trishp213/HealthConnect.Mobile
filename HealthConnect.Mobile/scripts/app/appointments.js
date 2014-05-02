@@ -18,8 +18,8 @@
     app.appointmentsService = {   
         viewModel: kendo.observable({
         selectedDate: null,
-                                        month: kendo.toString(new Date(), monthDisplayFormat),
-                                        daysOfWeek: new kendo.data.DataSource({ data: [] }),
+        month: kendo.toString(new Date(), monthDisplayFormat),
+        daysOfWeek: new kendo.data.DataSource({ data: [] }),
         startDate: null,
         endDate: null,
         updateDaysOfWeek: function () {
@@ -53,14 +53,25 @@
         },
         refreshData: function(e) {
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
+            $("#appointments-scroller").data("kendoMobileScroller").reset();
         },
         onClick: function(e) {
             $("li").removeClass("selectedGroup");
             $(".listHeader").removeClass("selectedGroup"); // unhilite all
             e.item.addClass("selectedGroup");
             var selectedDate = e.item.find(".day-of-week-value").val();
-            $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
+            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
+            selectedDateListItem.addClass("selectedGroup");
             app.appointmentsService.viewModel.set("month", e.item.find(".day-of-week-month").val());
+            
+            // scroll to selected date in list view
+            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
+            scroller.reset();
+            
+            var pos = $(selectedDateListItem).offset();
+            if(pos){
+            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
+                }
         },
         onSwipeMonth: function(e) {
             
@@ -92,9 +103,20 @@
         },
         onDataBound: function(e) {
             var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
-            $(".listHeader:contains(" + selectedDate + ")").addClass("selectedGroup");
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
             app.appointmentsService.viewModel.setScrollerHeight();
+            
+            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
+            selectedDateListItem.addClass("selectedGroup");
+            
+            // scroll to selected date in list view
+            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
+            scroller.reset();
+            
+            var pos = $(selectedDateListItem).offset();
+            if(pos){
+            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
+                }
         },
         setScrollerHeight: function(e) {
             $("#appointments-scroller").css("height", $(window).height() - $("#appointments-header").height());
