@@ -30,6 +30,14 @@
         </div>
     </header>
 </div>
+    
+    <div data-role="layout" data-id="unauthenticated-layout">
+    <header data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+        </div>
+    </header>
+</div>
 
 <script>
     
@@ -37,6 +45,7 @@
     $(document).ajaxError(function( event, jqxhr, settings, exception ) {
     if ( jqxhr.status === 401 ) {
         app.loginService.viewModel.set("isLoggedIn", false);
+        app.loginService.viewModel.set("password", '');
         app.application.navigate("views/login.html");
     }
 });

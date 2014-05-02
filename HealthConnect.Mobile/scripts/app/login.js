@@ -28,6 +28,7 @@
                             .done(function (e) {
                                 if (e === 200) {
                                     that.set("isLoggedIn", true);
+                                    app.application.navigate("views/menu.html");
                                 } else {
                                     navigator.notification.alert("Invalid username or password", function () {
                                     }, "Login failed", 'OK'); 
