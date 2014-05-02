@@ -60,16 +60,6 @@
     color: #FFFFFF !important;
 }
 
-/* DRAWER STYLES */
-.km-ios #health-connect-drawer .km-content, .km-android #health-connect-drawer .km-content, .km-blackberry #health-connect-drawer .km-content,
-.km-ios #health-connect-drawer .km-list > li, .km-android #health-connect-drawer .km-list > li, .km-blackberry #health-connect-drawer .km-list > li,
-.km-ios #health-connect-drawer .km-listview-link > .km-icon, .km-android #health-connect-drawer .km-listview-link > .km-icon, .km-blackberry #health-connect-drawer .km-listview-link > .km-icon,
-.km-ios #health-connect-drawer .km-list li > .km-icon, .km-android #health-connect-drawer .km-list li > .km-icon, .km-blackberry #health-connect-drawer .km-list li > .km-icon
-{
-    background-color: #ffffff;
-    color: #fff;
-}
-
 .km-drawer-button:before, .km-drawer-button:after { 
     content: "\e054";
 	color: #ffffff;
