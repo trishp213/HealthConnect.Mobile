@@ -151,7 +151,7 @@
         },
         setScrollerHeight: function(e) {
             // set the scroller to the correct height depending on the position of the device
-            $("#appointments-scroller").css("height", $(window).height() - $("#appointments-header").height());
+            $("#appointments-scroller").css("height", $(window).height() - $("#appointments-header").height() - 20 + "px");
         }
       })
     }
