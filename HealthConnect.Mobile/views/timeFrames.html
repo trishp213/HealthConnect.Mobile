@@ -1,40 +1,13 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <div data-role="view" data-show="viewModel.onShow" >
+        <div data-role="view">
         <ul data-role="listview" data-template="timeSpan-template"
-            data-click="viewModel.onTimeFrameChange"
-            data-source="viewModel.timeFrames"
-            id="timeFrames"></ul>
+            data-click="app.views.timeFrames.viewModel.onTimeFrameChange"
+            data-source="app.views.timeFrames.viewModel.timeFrames"></ul>
         <script type="text/x-kendo-templ" id="timeSpan-template">
   		<div>#: data.name #</div>
 		</script>
         </div>
         
         <script>
-			var viewModel = kendo.observable({
-                self: this, // hold on to a reference of this to access variables in function calls
-                back: '', // place to store the view to return the selected time frame to, because it doesn't show up in the history
-           	 selectedTimeFrame: {name: "1 week", value: "7"},
-                timeFrames: [
-                {name: "1 week", value: "7"}, 
-                {name: "30 days", value: "30"},
-                {name: "60 days", value: "60"},
-                {name: "90 days", value: "90"},
-                {name: "All", value: "0"}
-                ],
-                onShow: function(e){
-                    self.back = e.view.params.back; // store the view parameters when the view loads so they can be accessed later
-                },
-                onTimeFrameChange: function(e){
-                    // return to the previous view with the selected time frame as view parameters
-                    app.application.navigate("views/" + self.back + ".html?timeFrameName=" + e.dataItem.name + "&timeFrameValue=" + e.dataItem.value);
-                }  
-              });
+
         </script>
-    </body>
-</html>

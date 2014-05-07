@@ -2,57 +2,15 @@
 <html>
 <head>
     <title></title>
+    <meta charset="utf-8" />
 
     <link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
-    
-    <script src="scripts/lib/jquery.min.js"></script>
-    <script src="scripts/lib/kendo.all.min.js"></script>
-    <script src="scripts/lib/kendo.mobile.min.js"></script>
-    <script src="scripts/lib/date.js"></script>
+
     <script src="cordova.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/app/history.js"></script>
-    <script src="scripts/app/incoming.js"></script>
-    <script src="scripts/app/appointments.js"></script>
-    <script src="scripts/app/login.js"></script>   
+    <script data-main="scripts/main" src="scripts/lib/require.js"></script>
 </head>
 <body>
-    <div data-role="view"></div>
-
-
-
-<div data-role="layout" data-id="drawer-layout">
-    <header data-role="header">
-        <div data-role="navbar">
-            <a data-role="button" href="views/menu.html" data-icon="drawer-button" data-align="left"></a>
-            <span data-role="view-title"></span>
-        </div>
-    </header>
-</div>
-    
-    <div data-role="layout" data-id="unauthenticated-layout">
-    <header data-role="header">
-        <div data-role="navbar">
-            <span data-role="view-title"></span>
-        </div>
-    </header>
-</div>
-
-<script>
-    
-    // catch any unauthorized calls and redirect to login view
-    $(document).ajaxError(function( event, jqxhr, settings, exception ) {
-    if ( jqxhr.status === 401 ) {
-        app.loginService.viewModel.set("isLoggedIn", false);
-        app.loginService.viewModel.set("password", '');
-        app.application.navigate("views/login.html");
-    }
-});
-</script>
-
-
-
 
 </body>
 </html>

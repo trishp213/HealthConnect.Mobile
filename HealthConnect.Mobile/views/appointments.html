@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-
-<html>
-    <head>
-        <title>Referral Appointments</title>
-    </head>
-    <body>
-        <div data-role="view" data-title="Referral Appointments" 
-             data-model="app.appointmentsService.viewModel"
-             data-show="app.appointmentsService.viewModel.onShow">
+        <div id="appointments-view" data-role="view" data-title="Referral Appointments" 
+             data-model="app.views.appointments.viewModel"
+             data-show="app.views.appointments.viewModel.onShow">
             <div id="appointments-header">
             <div class="center padding-10" data-role="touch" data-enable-swipe="1" 
-                data-swipe="app.appointmentsService.viewModel.onSwipeMonth">
+                data-swipe="onSwipeMonth">
                 <span data-bind="text: month"></span>
             </div>
             <div data-role="touch" data-enable-swipe="1" 
-                data-swipe="app.appointmentsService.viewModel.onWeekSwipe">
-                <ul id="days-of-week-list"  data-click="app.appointmentsService.viewModel.onClick" 
+                data-swipe="onWeekSwipe">
+                <ul id="days-of-week-list"  data-click="onClick" 
                     data-role="listview" data-template="day-of-week-template" 
-                    data-source="app.appointmentsService.viewModel.daysOfWeek"></ul>
+                    data-source="daysOfWeek"></ul>
                 <script type="text/x-kendo-templ" id="day-of-week-template">
                     <span>#: data.day #</span><br/>
                     <span class="day-of-week-date">#: data.date #</span>
@@ -31,7 +24,7 @@
             <div data-role="scroller" id="appointments-scroller">
             <ul id="appointments-referrals-list" data-pull-to-refresh="true" data-role="listview"
                 data-template="appointments-template" 
-                data-source="app.appointmentsDataSource" data-bound="app.appointmentsService.viewModel.onDataBound"></ul>
+                data-source="appointmentsDataSource" data-bound="onDataBound"></ul>
             </div>
             <script type="text/x-kendo-templ" id="appointments-template">
                 <div class="listHeader">
@@ -40,7 +33,7 @@
                 		<span>#: data.AppointmentDate #</span>
                 	</div>
                 </div>
-                #= app.appointmentsService.viewModel.renderDetailsTemplate(data) #
+                #= renderDetailsTemplate(data) #
             </script>
             <script id="appointments-details-template" type="text/x-kendo-template">
                 <ul class="appointments-details listItemDetail">
@@ -54,6 +47,3 @@
                 </ul>
             </script>
         </div>
-    </body>
-</html>
-

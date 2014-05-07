@@ -1,44 +1,30 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Incoming Referrals</title>
-    </head>
-    <body>
-        <div data-role="view" data-title="Incoming Referrals" 
-             data-model="app.incomingService.viewModel"
-             data-show="app.incomingService.viewModel.onShow">
-            <div class="timeFrameLink">
-                <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=incoming"></a>
-            </div>
-			<div data-bind="visible: noData" class="no-records-message">No referrals</div>
-            <ul id="incoming-referrals-list" data-pull-to-refresh="true" 
-                data-role="listview" data-template="incoming-template" 
-                data-source="app.incomingDataSource" data-bound="app.incomingService.viewModel.onDataBound"></ul>
-            <script type="text/x-kendo-templ" id="incoming-template">
-                <div class="listHeader">
-            		<div class="listHeaderSection">
-                        <span>#: data.ReferralDatePrefix #</span>
-                		<span>#: data.ReferralDate #</span>
-                	</div>
-                </div>
-                #= app.incomingService.viewModel.renderDetailsTemplate(data) #
-            </script>
-            <script id="incoming-details-template" type="text/x-kendo-template">
-                <ul class="incoming-details listItemDetail">
-                    # $.each(data.IncomingReferralDetails, function (index, item) {
-                    #
-                    <li data-icon="details">
-                        <div>${item.OfficeName}</div>
-                        # if (item.AppointmentDateTime) { #
-                            Scheduled for ${item.AppointmentDate} at ${item.AppointmentTime}
-                        # }#
-                    </li>#                        
-                    }); 
-                    #
-                </ul>
-            </script>
-        </div>
-    </body>
-</html>
+         <div id="tabstrip-incoming" data-role="view" data-title="Incoming Referrals" 
+             data-model="app.views.incoming.viewModel"
+             data-show="app.views.incoming.viewModel.refreshData">
+           <div style="text-align: right">
+             <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html"></a>
+           </div>
+        
+      <ul data-icon="details" data-role="listview" data-template="incoming-template" 
+          data-source="app.views.incoming.viewModel.incomingDataSource" 
+          data-click="app.views.incoming.viewModel.listViewClick"></ul>
+        <script type="text/x-kendo-templ" id="incoming-template">
+            <span>#: data.ReferralDate #</span>
+      		#= app.views.incoming.viewModel.renderDetailsTemplate(data) #
+		</script>
+        <script id="incoming-details-template" type="text/x-kendo-template">
+           <ul style="list-style: none;" class="incoming-details">
+            # $.each(data.IncomingReferralDetails, function (index, item) {
+            # <li data-icon="details" style="border-bottom: 1px solid;"> 
+            	<div>${item.OfficeName}</div>
+                # if(item.AppointmentDateTime){ #
+                <div>Scheduled for ${item.AppointmentDate} at ${item.AppointmentTime}</div>
+               # }#
+              </li>#                        
+              }); 
+            #
+            </ul>
+		</script>
+    </div>
 

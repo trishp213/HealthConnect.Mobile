@@ -1,42 +1,24 @@
-<!DOCTYPE html>
 
-<html>
-    <head>
-        <title>Referral History</title>
-    </head>
-    <body>
-        <div data-role="view" data-title="Referral History"
-             data-model="app.historyService.viewModel"
-             data-show="app.historyService.viewModel.onShow">
-            <div class="timeFrameLink">
-                <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html?back=history"></a>
+         <div id="history-view" data-role="view" data-title="Referral History"
+             data-model="app.views.history.viewModel"
+             data-show="app.views.history.viewModel.refreshData">
+        <div style="text-align: right">
+             <a data-role="listview-link" data-bind="text: selectedTimeFrame.name" href="views/timeFrames.html"></a>
             </div>
-        <div data-bind="visible: noData" class="no-records-message">No referrals</div>
-      <ul data-role="listview" data-template="history-template" data-source="app.historyDataSource"
-          data-bound="app.historyService.viewModel.onDataBound"
-          data-click="app.historyService.viewModel.listViewClick" data-pull-to-refresh="true"></ul>
+        
+      <ul data-icon="details" data-role="listview" data-template="history-template" 
+          data-source="app.historyDataSource" 
+          data-click="listViewClick"></ul>
         <script type="text/x-kendo-templ" id="history-template">
-            <div class="listHeader">
-            <div class="listHeaderSection">
-  		  <span class="km-icon km-details"></span>
-            <span class="listHeaderTitle">#: data.Office.OfficeName #</span>
-            <span class="listHeaderDetail"> #= data.TotalReferrals# Referrals</span>     
-            </div>
-            </div>
-      		#= app.historyService.viewModel.renderDetailsTemplate(data) #
+  			<span class="km-icon km-details"></span><span>#: data.Office.OfficeName #</span><span class="right"> #= data.TotalReferrals# Referrals</span>     
+      		#= renderDetailsTemplate(data) #
 		</script>
         <script id="history-details-template" type="text/x-kendo-template">
-           <ul hidden  class="history-details listItemDetail">
+           <ul hidden  class="history-details">
             # $.each(data.ReferralHistoryDetails, function (index, item) {
-            # <li>
-            	<span>${item.DateString}</span>
-            	<span class="right">${item.NumberReferrals} Referrals</span>
-            </li>#                        
+            # <li data-icon="details"> ${item.DateString}  <span class="right">${item.NumberReferrals} Referrals</span></li>#                        
               }); 
             #
             </ul>
 		</script>
     </div>
-    </body>
-</html>
-
