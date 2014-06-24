@@ -5,7 +5,8 @@
 
 function getUriBase()
 {
-    return "http://localhost:5286/";
+//    return "http://localhost:5286/";
+  return "http://hc-test.cloudapp.net/";
 }
 
 function getUriApiMobile(target)
