@@ -6,8 +6,8 @@
                     isLoggedIn: false,
                     username: "",
                     password: "",
-
-                    onLogin: function () {
+        
+                    onLogin: function () { 
                         var that = this,
                             username = that.get("username").trim(),
                             password = that.get("password").trim();
@@ -21,7 +21,7 @@
                         }
 
                         $.ajax({
-                                   url: "http://localhost:5286/Api/Mobile/Login",
+                                   url: getUriApiMobile("Login"),
                                    type: "POST",
                                    data: { userName: username, password: password, api: true }
                                })

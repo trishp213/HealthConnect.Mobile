@@ -37,11 +37,11 @@
     }
 
     app.historyDataSource = new kendo.data.DataSource.create({
-            transport: {
-                read: {
-                    url:"http://localhost:5286/Api/Mobile/History",
-                	data: {timeFrame: app.historyService.viewModel.selectedTimeFrame.value}
-                    }
-            }
-        })
+      transport: {
+        read: {
+          url: getUriApiMobile("History"),
+          data: {timeFrame: app.historyService.viewModel.selectedTimeFrame.value}
+        }
+      }
+    })
 })(window);

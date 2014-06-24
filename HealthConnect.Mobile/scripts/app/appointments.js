@@ -3,11 +3,11 @@
     
     app.appointmentsDataSource = new kendo.data.DataSource.create({
       transport: {
-			read: {
-                  url:"http://localhost:5286/Api/Mobile/Appointments",
-              }
-        	}
-        });
+        read: {
+          url: getUriApiMobile("Appointments")
+        }
+      }
+    });
     
     var dayDisplayFormat = "dddd, MMM d";
     var monthDisplayFormat = "MMMM yyyy";    
