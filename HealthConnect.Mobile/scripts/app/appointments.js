@@ -64,13 +64,13 @@
             return kendo.Template.compile($('#appointments-details-template').html())(data);
         },
         onShow: function(e) {
+            app.appointmentsService.viewModel.clearHighlighting();
+
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
             $("#appointments-scroller").data("kendoMobileScroller").reset();
         },
         onClick: function(e) {
-            // remove the hilighting currently selected dates
-            $("li").removeClass("selectedGroup");
-            $(".listHeader").removeClass("selectedGroup"); 
+            app.appointmentsService.viewModel.clearHighlighting();
             
             // hilight the current day of week in the date slider
             e.item.addClass("selectedGroup");
@@ -152,6 +152,12 @@
         setScrollerHeight: function(e) {
             // set the scroller to the correct height depending on the position of the device
             $("#appointments-scroller").css("height", $(window).height() - $("#appointments-header").height() - 20 + "px");
+        },
+        clearHighlighting: function()
+        {
+            // remove the highlighting from currently selected dates
+            $("li").removeClass("selectedGroup");
+            $(".listHeader").removeClass("selectedGroup"); 
         }
       })
     }
