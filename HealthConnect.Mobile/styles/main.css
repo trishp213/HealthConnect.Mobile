@@ -191,4 +191,19 @@ li {
     text-align: center; 
     font-style: italic; 
     color: #999999;
-    }
+}
+
+.km-android .km-view {
+    -moz-box-direction: initial;
+    -webkit-box-direction: initial;
+    -ms-box-direction: initial;
+    box-direction: initial;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/* NavBar */
+.km-android .km-view-title {
+  visibility: visible;
+}
