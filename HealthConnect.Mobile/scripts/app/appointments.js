@@ -67,28 +67,34 @@
             app.appointmentsService.viewModel.clearHighlighting();
 
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
-            $("#appointments-scroller").data("kendoMobileScroller").reset();
+            var scroller_km = $("#appointments-scroller").data("kendoMobileScroller");
+            scroller_km.reset();
         },
-        onClick: function(e) {
+        scrollToSelectedDate: function(item)
+        {
             app.appointmentsService.viewModel.clearHighlighting();
-            
+
             // hilight the current day of week in the date slider
-            e.item.addClass("selectedGroup");
-            var selectedDate = e.item.find(".day-of-week-value").val();
+            item.addClass("selectedGroup");
+            var selectedDate = item.find(".day-of-week-value").val();
             var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
             selectedDateListItem.addClass("selectedGroup");
-            app.appointmentsService.viewModel.set("month", e.item.find(".day-of-week-month").val());
+            app.appointmentsService.viewModel.set("month", item.find(".day-of-week-month").val());
+
+            // scroll the referrals to match the date selected
+            var scroller = $("#appointments-scroller");
+            var scroller_km = scroller.data("kendoMobileScroller");
             
-            // scroll tback to the top
-            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
-            scroller.reset();
-            
-            // get the position of the selected date in the listview
-            var pos = $(selectedDateListItem).offset();
-            if(pos){
+            if (selectedDateListItem.length) {
                 // scroll to the selected date in the listview
-            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
-                }
+                scroller_km.animatedScrollTo(0, scroller.offset().top - scroller_km.scrollTop - selectedDateListItem.offset().top);
+            }
+            else {
+                scroller_km.animatedScrollTo(0, 0);
+            }
+        },
+        onClick: function(e) {
+            app.appointmentsService.viewModel.scrollToSelectedDate(e.item)
         },
         onSwipeMonth: function(e) {
             // move ahead or behind a month
@@ -133,21 +139,10 @@
             
             // hilight the selected date
             var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
-            $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
+            var selectedItem = $("input[value='" + selectedDate + "']").closest("li");
+
             app.appointmentsService.viewModel.setScrollerHeight();
-            
-            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
-            selectedDateListItem.addClass("selectedGroup");
-            
-            // scroll to the top
-            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
-            scroller.reset();
-            
-            var pos = $(selectedDateListItem).offset();
-            if(pos){
-                // scroll to the selected date in the list
-            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
-                }
+            app.appointmentsService.viewModel.scrollToSelectedDate(selectedItem);
         },
         setScrollerHeight: function(e) {
             // set the scroller to the correct height depending on the position of the device
@@ -169,6 +164,6 @@
     app.appointmentsService.viewModel.set("selectedDate", new Date());
     
     if (window.DeviceOrientationEvent) {
- 		window.addEventListener('deviceorientation', app.appointmentsService.viewModel.setScrollerHeight, false);
-        }
+      window.addEventListener('deviceorientation', app.appointmentsService.viewModel.setScrollerHeight, false);
+    }
 })(window);
