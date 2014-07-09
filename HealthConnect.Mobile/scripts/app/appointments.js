@@ -77,7 +77,7 @@
             // hilight the current day of week in the date slider
             item.addClass("selectedGroup");
             var selectedDate = item.find(".day-of-week-value").val();
-            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
+            var selectedDateListItem = $("#appointments-referrals-list .listHeader:contains(" + selectedDate + ")");
             selectedDateListItem.addClass("selectedGroup");
             app.appointmentsService.viewModel.set("month", item.find(".day-of-week-month").val());
 
