@@ -4,7 +4,7 @@
     app.appointmentsDataSource = new kendo.data.DataSource.create({
       transport: {
 			read: {
-                  url:"https://hc-uatweb.cloudapp.net/Api/Mobile/Appointments",
+                  url:getUriApiMobile("Appointments")
               }
         	}
         });

@@ -39,7 +39,7 @@
     app.historyDataSource = new kendo.data.DataSource.create({
             transport: {
                 read: {
-                    url:"https://hc-uatweb.cloudapp.net/Api/Mobile/History",
+                    url:getUriApiMobile("History"),
                 	data: {timeFrame: app.historyService.viewModel.selectedTimeFrame.value}
                     }
             }
