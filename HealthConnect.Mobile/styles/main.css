@@ -1,17 +1,6 @@
 @import url('http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css');
 
 /* IMAGES */
-.logo-image {
-    background-image: url(../styles/images/logo.png);
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    background-color:#011730;
-    height: 45px;
-    display: block;
-    margin: 0px auto;
-}
-
-
 .km-ios7 .km-list>li:last-child {
     box-shadow: inset 0 0 0 rgba(180,180,180,0.0) !important;
 -webkit-box-shadow: inset 0 0 0 rgba(180,180,180,0.0) !important;
@@ -202,4 +191,19 @@ li {
     text-align: center; 
     font-style: italic; 
     color: #999999;
-    }
+}
+
+.km-android .km-view {
+    -moz-box-direction: initial;
+    -webkit-box-direction: initial;
+    -ms-box-direction: initial;
+    box-direction: initial;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/* NavBar */
+.km-android .km-view-title {
+  visibility: visible;
+}
