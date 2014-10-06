@@ -21,7 +21,7 @@
                         }
 
                         $.ajax({
-                                   url: "http://localhost:5286/Api/Mobile/Login",
+                                   url: "http://hc-uatweb.cloudapp.net/Api/Mobile/Login",
                                    type: "POST",
                                    data: { userName: username, password: password, api: true }
                                })

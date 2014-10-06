@@ -28,7 +28,7 @@
        app.incomingDataSource = new kendo.data.DataSource.create({
             transport: {
                 read: {
-                    url:"http://localhost:5286/Api/Mobile/Incoming",
+                    url:"https://hc-uatweb.cloudapp.net/Api/Mobile/Incoming",
                 	data: {timeFrame: app.incomingService.viewModel.selectedTimeFrame.value}
                     }
             }
