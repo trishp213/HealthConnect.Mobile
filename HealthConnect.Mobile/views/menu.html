@@ -7,12 +7,13 @@
     <body>
         <div data-role="view" 
             data-title="Menu"
-            data-layout="unauthenticated-layout">
+            data-layout="unauthenticated-layout"
+            data-model="app.loginService.viewModel">
              <ul data-role="listview" id="menu-items">
                 <li><a href="views/incoming.html" data-icon="incoming-icon"> Incoming Referrals</a></li>
                 <li><a href="views/appointments.html" data-icon="appointments-icon"> Referral Appointments</a></li>
                 <li><a href="views/history.html" data-icon="history-icon"> Referral History</a></li>
-                <!--<li><a href="views/logout.html" data-icon="Logout-icon"> Log Out</a></li>-->
+                <li><a href="views/login.html" data-bind="click: onLogout" data-icon="logout-icon"> Log Out</a></li>
             </ul>
         </div>
         

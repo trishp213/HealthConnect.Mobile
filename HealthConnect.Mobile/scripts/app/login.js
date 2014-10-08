@@ -44,9 +44,12 @@
 
                     onLogout: function () {
                         var that = this;
-
                         that.clearForm();
+                        
                         that.set("isLoggedIn", false);
+                        $.ajax({
+                            url: getUriApiMobile("Logout")
+                        });
                     },
 
                     clearForm: function () {

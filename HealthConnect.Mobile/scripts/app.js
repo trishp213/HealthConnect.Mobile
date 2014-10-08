@@ -5,7 +5,7 @@
 
 function getUriBase()
 {
-//    return "http://localhost:5286/";
+//    return "http://localhost:57719/";
 //    return "http://hc-test.cloudapp.net/";
     return "http://hc-uatweb.cloudapp.net/";
 }
