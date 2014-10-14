@@ -48,6 +48,7 @@
                         
                         that.set("isLoggedIn", false);
                         $.ajax({
+                            type: "POST",
                             url: getUriApiMobile("Logout")
                         });
                     },
