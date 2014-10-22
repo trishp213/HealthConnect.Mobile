@@ -15,3 +15,21 @@ function getUriApiMobile(target)
 {
     return getUriBase() + "api/Mobile/" + target;
 }
+
+// global error handling
+var showAlert = function(message, title, callback) {
+    if(navigator.notification){
+        navigator.notification.alert(message, callback || function () {}, title, 'OK');
+    }
+    else alert(message);
+        
+};
+var showError = function(message) {
+    showAlert(message, 'Error occurred');
+};
+window.addEventListener('error', function (e) {
+    e.preventDefault();
+    var message = e.message + "' from " + e.filename + ":" + e.lineno;
+    showAlert(message, 'Error occurred');
+    return true;
+});
