@@ -5,13 +5,13 @@
 
 function getUriBase()
 {
-//    return "http://localhost:57719/";
-    return "http://hc-test.cloudapp.net/";
+//    return "http://localhost:11252/";
+    return "http://hc-test.cloudapp.net:81/";
 //    return "http://hc-uatweb.cloudapp.net/";
 //    return "http://172.168.12.77/HealthConnect/";
 }
 
 function getUriApiMobile(target)
 {
-    return getUriBase() + "Api/Mobile/" + target;
+    return getUriBase() + "api/Mobile/" + target;
 }
