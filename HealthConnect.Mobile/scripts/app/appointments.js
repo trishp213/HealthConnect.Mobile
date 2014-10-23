@@ -8,7 +8,6 @@
               }
         	},
         error: function(e) {
-            debugger;
             showError();
           }
         });
@@ -140,13 +139,14 @@
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
             app.appointmentsService.viewModel.setScrollerHeight();
             
-            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
+            var selectedDateListItem = $("#days-of-week-list > .listHeader:contains(" + selectedDate + ")");
             selectedDateListItem.addClass("selectedGroup");
             
             // scroll to the top
             var scroller = $("#appointments-scroller").data("kendoMobileScroller");
             scroller.reset();
             
+            debugger;
             var pos = $(selectedDateListItem).offset();
             if(pos){
                 // scroll to the selected date in the list
