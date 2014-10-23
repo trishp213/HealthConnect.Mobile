@@ -46,15 +46,12 @@
                         var that = this;
                         that.clearForm();
                         
-                        that.set("isLoggedIn", false);
                         $.ajax({
                             type: "POST",
                             url: getUriApiMobile("Logout")
                         })
-                       .done(function (e) {
-                            app.application.navigate("views/login.html");
-                        })
-                        .fail(function (e) {
+                       .always(function (e) {
+                            that.set("isLoggedIn", false);
                             app.application.navigate("views/login.html");
                         });
                     },
