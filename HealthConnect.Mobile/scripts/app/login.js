@@ -35,9 +35,7 @@
                                 }
                             })
                             .fail(function (e) {
-                                navigator.notification.alert("An error has occurred",
-                                                             function () {
-                                                             }, "Login failed", 'OK');
+                                showError();
                             });
                     },
 
