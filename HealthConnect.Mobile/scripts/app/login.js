@@ -12,6 +12,7 @@
                             username = that.get("username").trim(),
                             password = that.get("password").trim();
                         
+                        alert('onLogin');
                         console.log('onLogin');
 
                         if (username === "" || password === "") {
