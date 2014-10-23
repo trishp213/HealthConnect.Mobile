@@ -12,9 +12,6 @@
                             username = that.get("username").trim(),
                             password = that.get("password").trim();
                         
-                        alert('onLogin');
-                        console.log('onLogin');
-
                         if (username === "" || password === "") {
                             navigator.notification.alert("Both fields are required!",
                                                          function () {
@@ -49,6 +46,7 @@
                         var that = this;
                         that.clearForm();
                         
+                        app.loginService.viewModel.set('isLoggedIn', false);
                         that.set("isLoggedIn", false);
                         $.ajax({
                             type: "POST",
