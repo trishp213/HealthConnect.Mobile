@@ -40,7 +40,7 @@
                     },
 
 
-                    onLogout: function () {
+                    onLogout: function (e) {
                         var that = this;
                         that.clearForm();
                         
