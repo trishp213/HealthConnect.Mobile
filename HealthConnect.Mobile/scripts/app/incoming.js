@@ -31,6 +31,9 @@
                     url:getUriApiMobile("Incoming"),
                 	data: {timeFrame: app.incomingService.viewModel.selectedTimeFrame.value}
                     }
-            }
+            },
+        error: function(e) {
+            showError();
+          }
         })
 })(window);

@@ -42,6 +42,9 @@
                     url:getUriApiMobile("History"),
                 	data: {timeFrame: app.historyService.viewModel.selectedTimeFrame.value}
                     }
-            }
+            },
+        error: function(e) {
+            showError();
+          }
         })
 })(window);

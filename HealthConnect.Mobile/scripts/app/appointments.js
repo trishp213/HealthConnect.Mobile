@@ -6,7 +6,10 @@
 			read: {
                   url:getUriApiMobile("Appointments")
               }
-        	}
+        	},
+        error: function(e) {
+            showError();
+          }
         });
     
     var dayDisplayFormat = "dddd, MMM d";
