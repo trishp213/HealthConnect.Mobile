@@ -50,6 +50,12 @@
                         $.ajax({
                             type: "POST",
                             url: getUriApiMobile("Logout")
+                        })
+                       .done(function (e) {
+                            app.application.navigate("views/login.html");
+                        })
+                        .fail(function (e) {
+                            app.application.navigate("views/login.html");
                         });
                     },
 
