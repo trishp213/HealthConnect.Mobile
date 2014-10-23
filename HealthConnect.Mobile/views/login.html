@@ -15,8 +15,8 @@
                 <input id="logout" type="submit" data-role="button" data-bind="click: onLogout, visible: isLoggedIn" value="Logout" class="login-button" />
             </div>-->
             <form data-bind="events: { keyup: checkEnter }">
-                <h3 data-bind="invisible: isLoggedIn">Enter your credentials:</h3>
-                <div data-bind="invisible: isLoggedIn">
+                <h3>Enter your credentials:</h3>
+                <div>
                     <div class="padding-10">
                         <label>Username  </label><input type="text" data-bind="value: username" />
                     </div>
@@ -24,7 +24,7 @@
                         <label>Password  </label><input type="password" data-bind="value: password" />
                     </div>
                 </div>
-                <input id="login" type="submit" data-role="button" data-bind="click: onLogin, invisible: isLoggedIn" value="Login" class="login-button" />
+                <input id="login" type="submit" data-role="button" data-bind="click: onLogin" value="Login" class="login-button" />
             </form>
         </div>
 

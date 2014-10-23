@@ -8,6 +8,7 @@
               }
         	},
         error: function(e) {
+            debugger;
             showError();
           }
         });
