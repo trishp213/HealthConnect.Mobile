@@ -25,9 +25,9 @@ var showAlert = function(message, title, callback) {
 };
 var showError = function(message) {
     if(!message){
-        message = 'An error has occurred';
+        message = 'An unexpected problem has occurred, please login again to continue.';
     }
-    showAlert(message, 'Error');
+    showAlert(message, 'Health Connect');
     app.application.hideLoading();
     app.loginService.viewModel.set("isLoggedIn", false);
     app.application.navigate("views/login.html");
