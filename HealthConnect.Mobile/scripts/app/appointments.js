@@ -78,7 +78,7 @@
             // hilight the current day of week in the date slider
             e.item.addClass("selectedGroup");
             var selectedDate = e.item.find(".day-of-week-value").val();
-            var selectedDateListItem = $(".listHeader:contains(" + selectedDate + ")");
+            var selectedDateListItem = $("#days-of-week-list > .listHeader:contains(" + selectedDate + ")");
             selectedDateListItem.addClass("selectedGroup");
             app.appointmentsService.viewModel.set("month", e.item.find(".day-of-week-month").val());
             
@@ -134,6 +134,8 @@
                 app.appointmentsService.viewModel.set("noData", false);
             }
             
+            $("li").removeClass("selectedGroup");
+            
             // hilight the selected date
             var selectedDate = app.appointmentsService.viewModel.selectedDate.toString(dayDisplayFormat);
             $("input[value='" + selectedDate + "']").closest("li").addClass("selectedGroup");
@@ -146,7 +148,6 @@
             var scroller = $("#appointments-scroller").data("kendoMobileScroller");
             scroller.reset();
             
-            debugger;
             var pos = $(selectedDateListItem).offset();
             if(pos){
                 // scroll to the selected date in the list
