@@ -11,6 +11,8 @@
                         var that = this,
                             username = that.get("username").trim(),
                             password = that.get("password").trim();
+                        
+                        console.log('onLogin');
 
                         if (username === "" || password === "") {
                             navigator.notification.alert("Both fields are required!",

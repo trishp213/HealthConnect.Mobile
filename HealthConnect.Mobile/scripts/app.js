@@ -39,3 +39,4 @@ window.addEventListener('error', function (e) {
     showAlert(message, 'Error occurred');
     return true;
 });
+
