@@ -11,8 +11,7 @@ function getUriBase()
 //    return "http://172.168.12.77/HealthConnect/";
 }
 
-function getUriApiMobile(target)
-{
+function getUriApiMobile(target){
     return getUriBase() + "api/Mobile/" + target;
 }
 
@@ -25,8 +24,15 @@ var showAlert = function(message, title, callback) {
         
 };
 var showError = function(message) {
-    showAlert(message, 'Error occurred');
+    if(!message){
+        message = 'An error has occurred';
+    }
+    showAlert(message, 'Error');
+    app.application.hideLoading();
+    app.loginService.viewModel.set("isLoggedIn", false);
+    app.application.navigate("views/login.html");
 };
+
 window.addEventListener('error', function (e) {
     e.preventDefault();
     var message = e.message + "' from " + e.filename + ":" + e.lineno;

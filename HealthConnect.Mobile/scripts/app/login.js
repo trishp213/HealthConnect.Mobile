@@ -35,7 +35,7 @@
                                 }
                             })
                             .fail(function (e) {
-                                navigator.notification.alert("Invalid username or password",
+                                navigator.notification.alert("An error has occurred",
                                                              function () {
                                                              }, "Login failed", 'OK');
                             });
