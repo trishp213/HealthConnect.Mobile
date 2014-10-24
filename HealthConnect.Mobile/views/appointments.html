@@ -15,8 +15,7 @@
             </div>
             <div data-role="touch" data-enable-swipe="1" 
                 data-swipe="app.appointmentsService.viewModel.onWeekSwipe">
-                <ul id="days-of-week-list"  data-click="app.appointmentsService.viewModel.onClick" 
-                    data-role="listview" data-template="day-of-week-template" 
+                <ul id="days-of-week-list" data-role="listview" data-template="day-of-week-template" 
                     data-source="app.appointmentsService.viewModel.daysOfWeek"></ul>
                 <script type="text/x-kendo-templ" id="day-of-week-template">
                     <span>#: data.day #</span><br/>

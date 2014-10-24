@@ -70,29 +70,7 @@
             app.appointmentsDataSource.read(app.appointmentsService.viewModel.getDateRange());
             $("#appointments-scroller").data("kendoMobileScroller").reset();
         },
-        onClick: function(e) {
-            // remove the hilighting currently selected dates
-            $("li").removeClass("selectedGroup");
-            $(".listHeader").removeClass("selectedGroup"); 
-            
-            // hilight the current day of week in the date slider
-            e.item.addClass("selectedGroup");
-            var selectedDate = e.item.find(".day-of-week-value").val();
-            var selectedDateListItem = $("#days-of-week-list > .listHeader:contains(" + selectedDate + ")");
-            selectedDateListItem.addClass("selectedGroup");
-            app.appointmentsService.viewModel.set("month", e.item.find(".day-of-week-month").val());
-            
-            // scroll tback to the top
-            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
-            scroller.reset();
-            
-            // get the position of the selected date in the listview
-            var pos = $(selectedDateListItem).offset();
-            if(pos){
-                // scroll to the selected date in the listview
-            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
-                }
-        },
+        
         onSwipeMonth: function(e) {
             // move ahead or behind a month
             var monthsToAdd = 1;
@@ -153,6 +131,30 @@
                 // scroll to the selected date in the list
             	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
                 }
+            
+            $('li').on('click', function(e){
+                 // remove the hilighting currently selected dates
+            $("li").removeClass("selectedGroup");
+            $(".listHeader").removeClass("selectedGroup"); 
+            
+            // hilight the current day of week in the date slider
+            $(e.currentTarget).addClass("selectedGroup");
+            var selectedDate = $(e.currentTarget).find(".day-of-week-value").val();
+            var selectedDateListItem = $("#appointments-referrals-list span:contains(" + selectedDate + ")").closest('.listHeader');
+            selectedDateListItem.addClass("selectedGroup");
+            app.appointmentsService.viewModel.set("month", $(e.currentTarget).find(".day-of-week-month").val());
+            
+            // scroll tback to the top
+            var scroller = $("#appointments-scroller").data("kendoMobileScroller");
+            scroller.reset();
+            
+            // get the position of the selected date in the listview
+            var pos = $(selectedDateListItem).offset();
+            if(pos){
+                // scroll to the selected date in the listview
+            	scroller.scrollTo(-pos.left, -pos.top + $("#appointments-header").height() + selectedDateListItem.height());
+                }
+            });
         },
         setScrollerHeight: function(e) {
             // set the scroller to the correct height depending on the position of the device
