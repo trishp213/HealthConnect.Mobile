@@ -5,10 +5,11 @@
 
 function getUriBase()
 {
-//    return "http://localhost:11252/";
-    return "http://hc-test.cloudapp.net:81/";
-//    return "http://hc-uatweb.cloudapp.net/";
-//    return "http://172.168.12.77/HealthConnect/";
+//    return "http://localhost:11252/";                // DEV
+    return "http://hc-test.cloudapp.net:81/";          // TEST
+//    return "http://hc-demo.cloudapp.net/";           // DEMO
+//    return "http://hc-uatweb.cloudapp.net/";         // UAT
+//    return "http://199.79.49.72:81/";                // PRODUCTION
 }
 
 function getUriApiMobile(target){
