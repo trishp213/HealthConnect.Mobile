@@ -35,14 +35,12 @@
                                 }
                             })
                             .fail(function (e) {
-                                navigator.notification.alert("An error has occurred",
-                                                             function () {
-                                                             }, "Login failed", 'OK');
+                                showError();
                             });
                     },
 
 
-                    onLogout: function () {
+                    onLogout: function (e) {
                         var that = this;
                         that.clearForm();
                         

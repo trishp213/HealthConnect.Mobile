@@ -7,8 +7,8 @@ function getUriBase()
 {
 //    return "http://localhost:11252/";                // DEV
     return "http://hc-test.cloudapp.net:81/";          // TEST
-//    return "http://hc-demo.cloudapp.net/";           // DEMO
-//    return "http://hc-uatweb.cloudapp.net/";         // UAT
+//    return "http://hc-demo.cloudapp.net:81/";        // DEMO
+//    return "http://hc-uatweb.cloudapp.net:81/";      // UAT
 //    return "http://199.79.49.72:81/";                // PRODUCTION
 }
 
@@ -26,9 +26,9 @@ var showAlert = function(message, title, callback) {
 };
 var showError = function(message) {
     if(!message){
-        message = 'An error has occurred';
+        message = 'An unexpected problem has occurred, please login again to continue.';
     }
-    showAlert(message, 'Error');
+    showAlert(message, 'Health Connect');
     app.application.hideLoading();
     app.loginService.viewModel.set("isLoggedIn", false);
     app.application.navigate("views/login.html");
@@ -40,3 +40,4 @@ window.addEventListener('error', function (e) {
     showAlert(message, 'Error occurred');
     return true;
 });
+
