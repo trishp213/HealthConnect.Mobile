@@ -1,7 +1,7 @@
 {
   "ProjectGuid": "69d41287-6bc3-45a2-9c86-70f1dac3874a",
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "AppIdentifier": "NewportHealth.HealthConnect.MD",
+  "AppIdentifier": "net.newporthealth.HealthConnectMD",
   "ProjectName": "HealthConnect.Mobile",
   "FrameworkVersion": "3.5.0",
   "AndroidPermissions": [
@@ -56,7 +56,7 @@
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
   ],
-  "BundleVersion": "1.0",
+  "BundleVersion": "1.1",
   "Framework": "Cordova",
   "DisplayName": "MD",
   "Author": "",
